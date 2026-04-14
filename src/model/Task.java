@@ -1,3 +1,5 @@
+package model;
+
 import java.time.LocalDate;
 
 public class Task {
@@ -7,7 +9,7 @@ public class Task {
     private LocalDate date;
     private boolean isDeleted = false;
 
-    Task(int id, String title) {
+    public Task(int id, String title) {
         this.id = id;
         this.title = title;
         this.status = "ACTIVE";
@@ -37,12 +39,13 @@ public class Task {
 
 
     // setters for properties
-    void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    void markDeleted() {
+    public void markDeleted() {
         this.isDeleted = true;
+        this.status = "INACTIVE";
     }
 
 }

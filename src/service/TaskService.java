@@ -1,5 +1,9 @@
+package service;
+
 import java.util.List;
 import java.util.ArrayList;
+
+import model.Task;
 
 public class TaskService {
     List<Task> taskList = new ArrayList();
@@ -21,11 +25,23 @@ public class TaskService {
     public Task getTask(int id) {
 
         for(Task task: taskList) {
-            if(task.getId() == id) {
+            if(task.getId() == id && !task.isDeleted()) {
                 return task;
             }
         }
 
         return null;
     }
+
+    public Task deleteTask(int id) {
+        for(Task task: taskList) {
+            if(task.getId() == id && !task.isDeleted()) {
+                task.markDeleted();
+                return task;
+            }
+        }
+
+        return null;
+    }
+
 }
